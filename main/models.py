@@ -6,7 +6,7 @@ from django.db import models
 
 
 class ShortURL(models.Model):
-    url = models.CharField(max_length=100)
+    url = models.URLField(max_length=200)
     short_id = models.CharField(max_length=10)
     created_at = models.DateTimeField()
     times_accessed = models.IntegerField(default=0)

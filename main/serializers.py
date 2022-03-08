@@ -11,6 +11,7 @@ class ShortURLSerializer(serializers.ModelSerializer):
         fields = (
             'url', 'alias', 'times_accessed', 'accessed_at', 'created_at'
         )
+
         read_only_fields = (
             'times_accessed', 'accessed_at', 'created_at'
         )
@@ -32,3 +33,6 @@ class ShortURLSerializer(serializers.ModelSerializer):
             author=author,
             **validated_data,
         )
+
+
+

@@ -22,8 +22,7 @@ from main import views
 urlpatterns = [
     path('r/', views.redirect_to_url),
     path('api/urls/', views.ShortURLListCreateAPI.as_view()),
-    path('api/urls/<short_id>/', views.ShortURLRemoveAPI.as_view()),
-
+    path('api/urls/delete/<str:short_id>', views.ShortURLRemoveAPI,name="api"),
     path('admin/', admin.site.urls),
 
 ]

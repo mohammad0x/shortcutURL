@@ -1,7 +1,10 @@
 from datetime import datetime
-
+from pprint import pprint
+from rest_framework import status
+from rest_framework.response import Response
 from django.http import Http404
 from django.shortcuts import redirect
+from rest_framework.decorators import api_view
 from rest_framework.generics import (
     ListCreateAPIView, DestroyAPIView,
     RetrieveDestroyAPIView,
@@ -34,13 +37,9 @@ class ShortURLListCreateAPI(ListCreateAPIView):
             return ShortURL.objects.none()
 
 
-class ShortURLRemoveAPI(RetrieveDestroyAPIView):
-    lookup_field = 'short_id'
-    serializer_class = ShortURLSerializer
+# t9zMisR
 
-    def get_queryset(self):
-        if self.request.user.is_authenticated:
-            return ShortURL.objects.filter(author=self.request.user)
-        else:
-            return ShortURL.objects.none()
-
+@api_view(['DELETE'])
+def ShortURLRemoveAPI(request,short_id):
+        ShortURL.objects.filter(short_id=short_id).delete()
+        return Response("removed")
