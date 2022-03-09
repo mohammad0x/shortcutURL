@@ -1,0 +1,2 @@
+# shortcutURL
+shortcutURL Django DRF
